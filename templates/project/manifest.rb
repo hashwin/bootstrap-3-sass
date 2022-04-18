@@ -4,7 +4,7 @@ description 'Bootstrap for Sass'
 stylesheet 'styles.sass'
 
 # Bootstrap variable overrides file
-stylesheet '_bootstrap-variables.sass', :to => '_bootstrap-variables.sass'
+stylesheet '_bootstrap-3-variables.sass', :to => '_bootstrap-3-variables.sass'
 
 # Copy JS and fonts
 manifest = Pathname.new(File.dirname(__FILE__))

@@ -148,7 +148,7 @@ class Converter
 
       # generate variables template
       save_file 'templates/project/_bootstrap-variables.sass',
-                "// Override Bootstrap variables here (defaults from bootstrap-sass v#{Bootstrap::VERSION}):\n\n" +
+                "// Override Bootstrap variables here (defaults from bootstrap-sass v#{Bootstrap3::VERSION}):\n\n" +
                     File.read("#{save_to}/_variables.scss").lines[1..-1].join.gsub(/^(?=\$)/, '// ').gsub(/ !default;/, '')
     end
 

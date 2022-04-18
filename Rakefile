@@ -46,7 +46,7 @@ desc 'Dumps output to a CSS file for testing'
 task :debug do
   require 'sassc'
   require 'bootstrap-sass'
-  path = Bootstrap.stylesheets_path
+  path = Bootstrap3.stylesheets_path
   %w(_bootstrap).each do |file|
     engine = SassC::Engine.new(File.read("#{path}/#{file}.scss"), syntax: :scss, load_paths: ['.', path])
     File.open("tmp/#{file}.css", 'w') { |f| f.write(engine.render) }

@@ -13,15 +13,15 @@ namespace :bower do
   desc 'update main and version in bower.json'
   task :generate do
     require 'bootstrap-sass'
-    Dir.chdir Bootstrap.gem_path do
+    Dir.chdir Bootstrap3.gem_path do
       spec       = JSON.parse(File.read 'bower.json')
 
       spec['main'] =
-          find_files.(File.join(Bootstrap.stylesheets_path, '_bootstrap.scss')) +
-          find_files.(Bootstrap.fonts_path) +
+          find_files.(File.join(Bootstrap3.stylesheets_path, '_bootstrap.scss')) +
+          find_files.(Bootstrap3.fonts_path) +
           %w(assets/javascripts/bootstrap.js)
 
-      spec['version'] = Bootstrap::VERSION
+      spec['version'] = Bootstrap3::VERSION
 
       File.open('bower.json', 'w') do |f|
         f.puts JSON.pretty_generate(spec)
