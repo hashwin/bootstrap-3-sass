@@ -47,7 +47,7 @@ task :debug do
   require 'sassc'
   require 'bootstrap-3-sass'
   path = Bootstrap3.stylesheets_path
-  %w(_bootstrap).each do |file|
+  %w(_bootstrap-3).each do |file|
     engine = SassC::Engine.new(File.read("#{path}/#{file}.scss"), syntax: :scss, load_paths: ['.', path])
     File.open("tmp/#{file}.css", 'w') { |f| f.write(engine.render) }
   end
@@ -68,14 +68,14 @@ end
 desc 'Compile bootstrap-sass to tmp/ (or first arg)'
 task :compile, :css_path do |t, args|
   require 'sassc'
-  require 'bootstrap-sass'
+  require 'bootstrap-3-sass'
   require 'term/ansicolor'
 
   path = 'assets/stylesheets'
   css_path = args.with_defaults(css_path: 'tmp')[:css_path]
   puts Term::ANSIColor.bold "Compiling SCSS in #{path}"
   Dir.mkdir(css_path) unless File.directory?(css_path)
-  %w(_bootstrap bootstrap/_theme).each do |file|
+  %w(_bootstrap-3 bootstrap-3/_theme).each do |file|
     save_path = "#{css_path}/#{file.sub(/(^|\/)?_+/, '\1').sub('/', '-')}.css"
     puts Term::ANSIColor.cyan("  #{save_path}") + '...'
     engine = SassC::Engine.new(File.read("#{path}/#{file}.scss"), syntax: :scss, load_paths: ['.', path])
